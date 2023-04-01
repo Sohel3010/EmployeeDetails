@@ -1,0 +1,37 @@
+package com.empDetailsDao;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.empDetails.EmpDetails;
+
+public class EmpDetailsDaoImpl implements EmpDetailsDao {
+	private JdbcTemplate jdbcTemplate;
+
+	public int insert(EmpDetails empDetails) {
+
+		// inserting data
+		String query = "insert into emp_details(ID,NAME,GENDER,EMAIL,PASSWORD,CONTACT,JOBROLE,SALARY) values (?,?,?,?,?,?,?,?)";
+		int result = jdbcTemplate.update(query, empDetails.getId(), empDetails.getName(), empDetails.getGender(),
+				empDetails.getEmail(), empDetails.getPassword(), empDetails.getContact(), empDetails.getJobRole(),
+				empDetails.getSalary());
+		return result;
+	}
+
+	// updating data
+	public int update(EmpDetails empDetails) {
+		String query = "update emp_details set NAME=?,GENDER=?,EMAIL=?,PASSWORD=?,CONTACT=?,JOBROLE=? ,SALARY=? WHERE ID=?";
+		int result = jdbcTemplate.update(query, empDetails.getName(), empDetails.getGender(), empDetails.getEmail(),
+				empDetails.getPassword(), empDetails.getContact(), empDetails.getJobRole(), empDetails.getSalary(),
+				empDetails.getId());
+		return result;
+	}
+
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
+}
