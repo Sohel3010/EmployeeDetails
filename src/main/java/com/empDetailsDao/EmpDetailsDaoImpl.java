@@ -25,6 +25,13 @@ public class EmpDetailsDaoImpl implements EmpDetailsDao {
 				empDetails.getId());
 		return result;
 	}
+	
+	// delete data
+	public int delete(int studentID) {
+		String query="delete from emp_details where id = ?";
+		int result = jdbcTemplate.update(query,studentID);
+		return result;
+	}
 
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
@@ -33,5 +40,7 @@ public class EmpDetailsDaoImpl implements EmpDetailsDao {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+
+	
 
 }

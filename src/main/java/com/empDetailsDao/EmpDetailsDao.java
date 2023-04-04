@@ -8,5 +8,9 @@ public interface EmpDetailsDao {
 
 // updating data
 	public int update(EmpDetails empDetails);
+	
+	// delete data
+	
+	public int delete(int studentID);
 
 }
