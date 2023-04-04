@@ -18,13 +18,10 @@ public class App {
 
 		// inserted
 		EmpDetails ED = new EmpDetails();
-		
-		// Update
-		
-		EmpDetails ED2=new EmpDetails();
 
-//		int result = S1.delete(1001);
-//		System.out.println("Deleted");
+		// Update
+
+		EmpDetails ED2 = new EmpDetails();
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -71,10 +68,9 @@ public class App {
 				ED.setSalary(salary);
 
 				int result = S1.insert(ED);
-				System.out.println("Details Added " + result) ;
+				System.out.println("Details Added " + result);
 				break;
-				
-				
+
 			case 2:
 				System.out.println("Enter employee Id :");
 				int id1 = Integer.parseInt(br.readLine());
@@ -111,28 +107,26 @@ public class App {
 
 				int result1 = S1.update(ED2);
 				System.out.println("Updated " + result1);
-				
+
 				break;
 			case 3:
 				System.out.println("Enter employee Id : ");
-				int id3=Integer.parseInt(br.readLine());
+				int id3 = Integer.parseInt(br.readLine());
 				int result3 = S1.delete(id3);
 				System.out.println("Deleted " + result3);
 				break;
 			case 4:
-				System.out.println("Good");
+				System.out.println("Select Single Details");
 				break;
 			case 5:
-				System.out.println("Good");
+				System.out.println("Select multiple details");
 				break;
 			case 6:
-				System.out.println("Good");
 				break;
 
 			default:
 				System.out.println("Please check the number");
 			}
-
 		}
 	}
 
