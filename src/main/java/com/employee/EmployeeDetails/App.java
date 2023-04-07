@@ -15,7 +15,7 @@ public class App {
 	public static void main(String[] args) throws IOException {
 		ApplicationContext con = new ClassPathXmlApplicationContext("com/employee/EmployeeDetails/empdetails.xml");
 		EmpDetailsDao S1 = con.getBean("emp3", EmpDetailsDaoImpl.class);
-
+		
 		// inserted
 		EmpDetails ED = new EmpDetails();
 
@@ -34,6 +34,8 @@ public class App {
 			int num = Integer.parseInt(br.readLine());
 			switch (num) {
 			case 1:
+					
+				
 				System.out.println("Enter employee Id :");
 				int id = Integer.parseInt(br.readLine());
 
@@ -57,7 +59,8 @@ public class App {
 
 				System.out.println("Enter employee Salary :");
 				int salary = Integer.parseInt(br.readLine());
-
+				
+				
 				ED.setId(id);
 				ED.setName(name);
 				ED.setGender(gender);
@@ -67,8 +70,13 @@ public class App {
 				ED.setJobRole(role);
 				ED.setSalary(salary);
 
+				
+				try {
 				int result = S1.insert(ED);
 				System.out.println("Details Added " + result);
+				}catch(Exception e) {
+					System.out.println("Id alredy exixst");
+				}
 				break;
 
 			case 2:
