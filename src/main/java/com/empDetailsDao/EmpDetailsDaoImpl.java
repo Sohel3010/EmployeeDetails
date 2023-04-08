@@ -25,11 +25,21 @@ public class EmpDetailsDaoImpl implements EmpDetailsDao {
 				empDetails.getId());
 		return result;
 	}
-	
+
+	// update data by name
+	@Override
+	public int updateByName(EmpDetails empDetails) {
+		String query = "update emp_details set ID=?,GENDER=?,EMAIL=?,PASSWORD=?,CONTACT=?,JOBROLE=?,SALARY=? WHERE NAME=?";
+		int result = jdbcTemplate.update(query, empDetails.getId(), empDetails.getGender(), empDetails.getEmail(),
+				empDetails.getPassword(), empDetails.getContact(), empDetails.getJobRole(), empDetails.getSalary(),
+				empDetails.getName());
+		return result;
+	}
+
 	// delete data
 	public int delete(int studentID) {
-		String query="delete from emp_details where id = ?";
-		int result = jdbcTemplate.update(query,studentID);
+		String query = "delete from emp_details where id = ?";
+		int result = jdbcTemplate.update(query, studentID);
 		return result;
 	}
 
@@ -40,7 +50,5 @@ public class EmpDetailsDaoImpl implements EmpDetailsDao {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
-	
 
 }
